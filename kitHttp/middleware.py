@@ -200,12 +200,12 @@ def middleware_factory(self: "kitHttp.KitHttp", jwt_class: Optional[Any] = None)
             try:
                 resp = await handler(request, **params)
             except Exception as e:
+                log.exception(e)
                 if isinstance(e, ValueError):
                     return web.json_response(
                         {"success": False, "msg": f"Invalid value: {str(e)}"}
                     )
                 else:
-                    log.error(e)
                     return web.json_response(
                         {"success": False, "msg": f"Internal Server Error: {str(e)}"},
                         status=500,

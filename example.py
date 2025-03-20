@@ -1,4 +1,4 @@
-from kitHttp import KitHttp
+from kit_http import KitHttp
 
 
 class Example(KitHttp):

@@ -4,9 +4,9 @@ from typing import Optional
 
 import aiohttp
 from aiohttp import web
-from netfere import utils, Result
+from kit_utils import Result, utils
 
-import kitHttp
+import kit_http
 
 log = logging.getLogger(__name__)
 
@@ -41,7 +41,7 @@ async def ask(data, io: IO, request):
 
 
 async def todo(
-    self: "kitHttp.KitHttp",
+    self: "kit_http.KitHttp",
     io: IO,
     payload,
     request: web.Request,
@@ -76,7 +76,7 @@ async def todo(
 
 
 async def init_websocket(
-    self: "kitHttp.KitHttp", request: web.Request, handler, **kwargs
+    self: "kit_http.KitHttp", request: web.Request, handler, **kwargs
 ):
 
     _id = kwargs.pop("id", utils.randomStr(10, is_digits=True))

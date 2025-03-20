@@ -3,9 +3,9 @@ import logging
 
 import aiohttp
 from aiohttp import web
-from netfere import utils
+from kit_utils import utils
 
-import kitHttp
+import kit_http
 
 from .socket import Socket
 
@@ -24,7 +24,7 @@ async def ask(data, socket: Socket, request):
 
 
 async def todo(
-    self: "kitHttp.KitHttp",
+    self: "kit_http.KitHttp",
     socket: Socket,
     payload,
     request: web.Request,
@@ -58,7 +58,7 @@ async def todo(
         await socket.emit("error", {"message": str(e)})
 
 
-async def websocket(self: "kitHttp.KitHttp", request: web.Request, handler, **kwargs):
+async def websocket(self: "kit_http.KitHttp", request: web.Request, handler, **kwargs):
 
     _id = kwargs.pop("id", utils.randomStr(10, is_digits=True))
 

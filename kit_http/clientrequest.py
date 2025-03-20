@@ -1,9 +1,10 @@
 import asyncio
 import logging
-from typing import Any, Dict, Union, Optional, Literal
+from typing import Any, Dict, Literal, Optional, Union
 
 import aiohttp
-from netfere import Result, utils, seconds
+from kit_utils import Result, utils
+from kit_utils.vars import seconds
 
 log = logging.getLogger(__name__)
 

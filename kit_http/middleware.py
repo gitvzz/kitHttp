@@ -1,13 +1,13 @@
 import json
 import logging
-from typing import Dict, List, Optional, Any, Tuple, cast
+from typing import Any, Dict, List, Optional, Tuple, cast
 
 from aiohttp import web
-from aiohttp.web_request import FileField
 from aiohttp.multipart import BodyPartReader  # 导入正确的类型
-from netfere import utils
+from aiohttp.web_request import FileField
+from kit_utils import utils
 
-import kitHttp
+import kit_http
 
 from .websocket import websocket
 
@@ -68,7 +68,7 @@ async def extract_files_and_data(
     return files, data
 
 
-def middleware_factory(self: "kitHttp.KitHttp", jwt_class: Optional[Any] = None):
+def middleware_factory(self: "kit_http.KitHttp", jwt_class: Optional[Any] = None):
     """
     创建中间件工厂
 
@@ -200,7 +200,7 @@ def middleware_factory(self: "kitHttp.KitHttp", jwt_class: Optional[Any] = None)
             try:
                 resp = await handler(request, **params)
             except Exception as e:
-                log.exception(e)
+                log.error(e)
                 if isinstance(e, ValueError):
                     return web.json_response(
                         {"success": False, "msg": f"Invalid value: {str(e)}"}
